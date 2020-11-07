@@ -4,8 +4,13 @@ import arcade
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 counter = 0
-Range_full = 60
-Range_delta = 30
+Angle_min = 0
+Angle_max = 70
+Animation_steps = 30
+step_width = round(Angle_max - Angle_min)/Animation_steps
+delta_x = 1
+
+
 
 def draw_grass():
     """ Draw the ground """
@@ -38,14 +43,13 @@ def on_draw(delta_time):
 
 
     # mytest
+    global counter
+    counter += 1
+    step = counter % Animation_steps
 
-    arcade.draw_arc_filled(500, 350, 100, 100, arcade.csscolor.YELLOW, 0, 360)
-    arcade.draw_arc_filled(600, 350, 100, 100, arcade.csscolor.YELLOW, 30, 330)
-    arcade.draw_arc_filled(700, 350, 100, 100, arcade.csscolor.YELLOW, 60, 300)
 
-
-    arcade.draw_arc_filled(200, 500, 100, 100, arcade.csscolor.YELLOW, 60, 300)
-
+    arcade.draw_arc_filled(200 + counter, 500, 100, 100, arcade.csscolor.YELLOW, 0 + (step*step_width), 360 - (step*step_width))
+    arcade.draw_circle_filled(185 + counter, 525, 8, arcade.color.BLACK)
 
 def main():
     arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Drawing with Functions")
