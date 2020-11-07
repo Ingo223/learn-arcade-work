@@ -5,8 +5,8 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 counter = 0
 Angle_min = 0
-Angle_max = 70
-Animation_steps = 30
+Angle_max = 60
+Animation_steps = 15
 step_width = round(Angle_max - Angle_min)/Animation_steps
 delta_x = 1
 
@@ -48,8 +48,8 @@ def on_draw(delta_time):
     step = counter % Animation_steps
 
 
-    arcade.draw_arc_filled(200 + counter, 500, 100, 100, arcade.csscolor.YELLOW, 0 + (step*step_width), 360 - (step*step_width))
-    arcade.draw_circle_filled(185 + counter, 525, 8, arcade.color.BLACK)
+    arcade.draw_arc_filled(200 + 3*counter, 500, 100, 100, arcade.csscolor.YELLOW, 0 + (step*step_width), 360 - (step*step_width))
+    arcade.draw_circle_filled(185 + 3*counter, 525, 8, arcade.color.BLACK)
 
 def main():
     arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Drawing with Functions")

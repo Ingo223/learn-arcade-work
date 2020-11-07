@@ -52,7 +52,7 @@ arcade.draw_circle_filled(500, 550, 40, arcade.csscolor.YELLOW)
 arcade.draw_line(500, 550, 450, 550, arcade.color.YELLOW,3) # only 1 ray!!
 
 #draw text
-arcade.draw_text("Klick or Strick!",150,250, arcade.color.YELLOW, 24)
+arcade.draw_text("Das ist der Rest vom Regenwald!",100,250, arcade.color.YELLOW, 24)
 
 
 
