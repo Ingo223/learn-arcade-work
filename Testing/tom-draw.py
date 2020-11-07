@@ -1,40 +1,52 @@
+# Drawing & movement in arcade using functions
+
 import arcade
 
-arcade.open_window(800, 600, "Drawing Example")
-
-# Set the background color
-arcade.set_background_color(arcade.csscolor.SKY_BLUE)
-
-# Get ready to draw
-arcade.start_render()
-
-# Draw a rectangle
-# Left of 0, right of 599,
-# Top of 300, bottom of 0
-arcade.draw_lrtb_rectangle_filled(0, 799, 300, 0, arcade.csscolor.CHARTREUSE)
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 600
 
 
-# House
-# Center of 399, 150
-# Width of 160
-# Height of 200
-arcade.draw_rectangle_filled(399, 150, 160, 200, arcade.csscolor.ORANGE_RED)
-# Triangle is made of these points:
-# (400,400), (320, 250), (480, 250)
-arcade.draw_triangle_filled(400, 400, 320, 250, 480, 250, arcade.csscolor.BROWN)
+def draw_ground():
+    """ Draw the ground """
+    arcade.draw_lrtb_rectangle_filled(0, SCREEN_WIDTH, SCREEN_HEIGHT / 3, 0, arcade.color.AIR_SUPERIORITY_BLUE)
 
-# Windows
-
-arcade.draw_lrtb_rectangle_filled(330, 370, 220, 180, arcade.csscolor.BLACK)
-arcade.draw_lrtb_rectangle_filled(420, 460, 220, 180, arcade.csscolor.BLACK)
-
-# Door
-arcade.draw_lrtb_rectangle_filled(400, 440, 120, 50, arcade.csscolor.BLACK)
+def draw_car(x, y):
+    """ Draw a car """
 
 
 
-# Finish drawing
-arcade.finish_render()
+    # car
+    arcade.draw_lrtb_rectangle_filled(on_draw.car_l, on_draw.car_r, 100, 50, arcade.color.RED)
+    arcade.draw_lrtb_rectangle_filled(on_draw.car_l+25, on_draw.car_r-25, 130, 100, arcade.color.RED)
+    arcade.draw_circle_filled(on_draw.car_l+20, 50, 20, arcade.color.BLACK)
+    arcade.draw_circle_filled(on_draw.car_r-20, 50, 20, arcade.color.BLACK)
 
-# Keep the window open
-arcade.run()
+
+def on_draw(delta_time):
+    """ Draw everything """
+    arcade.start_render()
+
+    draw_ground()
+    draw_car(on_draw.car_l, on_draw.car_r)
+
+
+    # Add one to the x value, making the car person move right
+    # Negative numbers move left. Larger numbers move faster.
+    on_draw.car_l += 1
+    on_draw.car_r += 1
+
+# Create a value that our car will start at.
+on_draw.car_l = 50
+on_draw.car_r = 150
+
+def main():
+    arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Drawing with Functions")
+    arcade.set_background_color(arcade.color.DARK_BLUE)
+
+    # Call on_draw every 60th of a second.
+    arcade.schedule(on_draw, 1/60)
+    arcade.run()
+
+
+# Call the main function to get the program started.
+main() 
