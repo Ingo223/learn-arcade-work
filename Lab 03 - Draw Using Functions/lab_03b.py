@@ -8,8 +8,9 @@ counter = 0
 Angle_min = 0
 Angle_max = 60
 Animation_steps = 30
+pacradius = 8
 step_width = round(Angle_max - Angle_min)/Animation_steps
-delta_x = 3
+delta_x = 1
 
 
 
@@ -27,8 +28,8 @@ def draw_everything(delta_time):
     # aktuellen Animationsschritt berechnen
     step = counter % Animation_steps
     # aktuellen Pacman mit Auge an aktueller Position zeichnen
-    arcade.draw_arc_filled(-50 + delta_x*counter, 50 + SCREEN_HEIGHT/3, 100, 100, arcade.csscolor.YELLOW, 0 + (step*step_width), 360 - (step*step_width))
-    arcade.draw_circle_filled(-65 + delta_x*counter, 75 + SCREEN_HEIGHT/3, 8, arcade.color.BLACK)
+    arcade.draw_arc_filled(-50 + delta_x*counter, 50 + SCREEN_HEIGHT/3, pacradius*2, pacradius*2, arcade.csscolor.YELLOW, 0 + (step*step_width), 360 - (step*step_width))
+    arcade.draw_circle_filled(-50 - pacradius/3 + delta_x*counter, 50 + pacradius/2 + SCREEN_HEIGHT/3, pacradius/3, arcade.color.BLACK)
     # counter weiterzählen
     counter += 1
     if delta_x * counter > SCREEN_WIDTH + 100:

@@ -6,7 +6,7 @@ import arcade
 arcade.open_window(600,600,"drawing example")
 #arcade.Window(800,600,"Drawing Excample")
 
-arcade.set_background_color(arcade.csscolor.SKY_BLUE)
+arcade.set_background_color(arcade.csscolor.BLACK)
 
 
 #get ready to draw
@@ -20,9 +20,17 @@ arcade.draw_lrtb_rectangle_filled(0, 599, 300, 0, arcade.csscolor.GREEN)
 #Tree trunk
 # center of 100, 320
 # width 29; height 60
-arcade.draw_rectangle_filled(100, 320, 20, 60, arcade.csscolor.SIENNA)
+
 #tree top
-arcade.draw_circle_filled(100,350,30,arcade.csscolor.DARK_GREEN)
+x = 100
+y = 350
+radius = 50
+shield = 20
+
+
+arcade.draw_circle_outline(x, y, radius + shield,arcade.csscolor.BLUE_VIOLET, shield)
+arcade.draw_circle_outline(x, y, radius + shield/2,arcade.csscolor.TOMATO, shield/2)
+arcade.draw_triangle_outline(x, y + 30, x - 20, y - 20, x + 20, y - 20, arcade.csscolor.YELLOW, 30)
 
 #another tree
 arcade.draw_rectangle_filled(200, 320, 20, 60, arcade.csscolor.SIENNA)
@@ -33,8 +41,8 @@ arcade.draw_rectangle_filled(300, 320, 20, 60, arcade.csscolor.SIENNA)
 arcade.draw_arc_filled(300,350,40,70, arcade.csscolor.DARK_GREEN, -20, 200)
 
 #again another tree
-arcade.draw_rectangle_filled(400, 320, 20, 60, arcade.csscolor.SIENNA)
-arcade.draw_triangle_filled(400, 400, 370, 320, 430, 320, arcade.csscolor.DARK_GREEN)
+
+arcade.draw_triangle_outline(400, 400, 360, 320, 440, 320, arcade.csscolor.DARK_GREEN, 25)
 
 #again another tree
 arcade.draw_rectangle_filled(500, 320, 20, 60, arcade.csscolor.SIENNA)
