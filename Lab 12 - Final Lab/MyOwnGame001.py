@@ -13,23 +13,28 @@ class My_shooter(arcade.Window):
         super().__init__(width, height, title)
 
         self.startbildschirm = True
+        self.hintergrundbild = None
 
     def setup(self):
         #alles was das Spiel braucht wird hier bereitgestellt
-        pass
+        self.hintergrundbild = arcade.load_texture("galaxy.png")
 
-    def draw_startbildschirm(self):
-        arcade.set_background_color(arcade.color.SKY_BLUE)
-        arcade.draw_text("Start", 100, 250, arcade.color.YELLOW, 300)
-        arcade.draw_text("Bildschirm", 150, 180, arcade.color.ROSY_BROWN, 120)
+
+    def draw_background(self):
+        if self.startbildschirm:
+            arcade.set_background_color(arcade.color.SKY_BLUE)
+            arcade.draw_text("Start", 100, 250, arcade.color.YELLOW, 300)
+            arcade.draw_text("Bildschirm", 150, 180, arcade.color.ROSY_BROWN, 120)
+        else:
+            arcade.draw_texture_rectangle(500, 500, 1000, 1000, self.hintergrundbild)
 
 
     def on_draw(self):
         # Spielfeld zeichnen mit aktuellen Daten
         arcade.start_render()
-        arcade.set_background_color(arcade.color.BLACK)
-        if self.startbildschirm:
-            self.draw_startbildschirm()
+        self.draw_background()
+
+
 
     def update(self, delta_time: float):
         # Spiellogik, Bewegungen, Collisionen feststellen, Variablen usw aktualisieren
@@ -54,8 +59,6 @@ class My_shooter(arcade.Window):
 
 
 def main():
-    ''' gewöhnlich wird alles in eine "main-method" gepackt.
-     Warum eigentlich bzw. welche Nachteile hat es, wenn man es nicht macht?'''
     game = My_shooter(width, height, title)
     game.setup()
     arcade.run()
