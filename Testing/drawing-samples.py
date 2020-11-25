@@ -60,7 +60,9 @@ arcade.draw_circle_filled(500, 550, 40, arcade.csscolor.YELLOW)
 arcade.draw_line(500, 550, 450, 550, arcade.color.YELLOW,3) # only 1 ray!!
 
 #draw text
-arcade.draw_text("Das ist der Rest vom Regenwald!",100,250, arcade.color.YELLOW, 24)
+zahl = 66
+testtext = f"Die Zahl lautet: {zahl}"
+arcade.draw_text(testtext,100,250, arcade.color.YELLOW, 24)
 
 
 
