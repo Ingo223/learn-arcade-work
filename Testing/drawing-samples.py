@@ -2,11 +2,13 @@
 multiline comments use 3 double-quotes sourrounding"""
 
 import arcade
+from PIL import Image
 
 arcade.open_window(600,600,"drawing example")
 #arcade.Window(800,600,"Drawing Excample")
 
 arcade.set_background_color(arcade.csscolor.BLACK)
+
 
 
 #get ready to draw
@@ -17,9 +19,10 @@ arcade.start_render()
 arcade.draw_lrtb_rectangle_filled(0, 599, 300, 0, arcade.csscolor.GREEN)
 
 
+
 #Tree trunk
 # center of 100, 320
-# width 29; height 60
+# WIDTH 29; HEIGHT 60
 
 #tree top
 x = 100

@@ -4,28 +4,28 @@ import arcade
 
 
 class MyGame(arcade.Window):
-    def __init__(self, width, height, title, bg_color):
-        super().__init__(width, height, title)
+    def __init__(gself, WIDTH, HEIGHT, title, bg_color):
+        super().__init__(WIDTH, HEIGHT, title)
         arcade.set_background_color(bg_color)
-        self.width = width
-        self.height = height
-        self.title = title
-        self.position = 0
+        gself.WIDTH = WIDTH
+        gself.HEIGHT = HEIGHT
+        gself.title = title
+        gself.position = 0
 
-    def on_draw(self):
+    def on_draw(gself):
         arcade.start_render()
-        y = self.height / 2
-        message = self.title + ': ' + str(self.position)
-        arcade.draw_text(message, self.position, y, arcade.color.BLACK, 12)
+        y = gself.HEIGHT / 2
+        message = gself.title + ': ' + str(gself.position)
+        arcade.draw_text(message, gself.position, y, arcade.color.BLACK, 12)
 
 
 
 
 
-    def update(self, delta_time):
-        self.position += 1
-        if self.position > self.width:
-            self.position = 0
+    def update(gself, delta_time):
+        gself.position += 1
+        if gself.position > gself.WIDTH:
+            gself.position = 0
 
 
 def main():
@@ -43,27 +43,27 @@ import arcade
 
 
 class MyGame(arcade.Window):
-    def __init__(self, width, height, title, bg_color):
-        super().__init__(width, height, title)
+    def __init__(gself, WIDTH, HEIGHT, title, bg_color):
+        super().__init__(WIDTH, HEIGHT, title)
         arcade.set_background_color(bg_color)
-        self.width = width
-        self.height = height
-        self.position = 0
-        self.velocity = 200
-        self.radius = 30
+        gself.WIDTH = WIDTH
+        gself.HEIGHT = HEIGHT
+        gself.position = 0
+        gself.velocity = 200
+        gself.radius = 30
 
-    def on_draw(self):
+    def on_draw(gself):
         arcade.start_render()
-        y = self.height / 2
-        arcade.draw_circle_filled(self.position, y, self.radius, arcade.color.RED)
+        y = gself.HEIGHT / 2
+        arcade.draw_circle_filled(gself.position, y, gself.radius, arcade.color.RED)
 
-    def update(self, delta_time):
-        self.position += self.velocity * delta_time
+    def update(gself, delta_time):
+        gself.position += gself.velocity * delta_time
 
         # Did the circle hit the right side of screen?
 
-        if self.position > self.width - self.radius or self.position < self.radius:
-            self.velocity *= -1
+        if gself.position > gself.WIDTH - gself.radius or gself.position < gself.radius:
+            gself.velocity *= -1
 
 
 def main():

@@ -24,8 +24,8 @@ class My_shooter(arcade.Window):
 
     def setup(self):
         #alles was das Spiel braucht wird hier bereitgestellt
-        self.start_screen = arcade.load_texture("galaxy.png")
-        self.battle_screen = arcade.load_texture("starfield.png")
+        self.start_screen = arcade.load_texture("container/galaxy.png")
+        self.battle_screen = arcade.load_texture("not_used/starfield.png")
 
     def draw_startscreen(self):
 

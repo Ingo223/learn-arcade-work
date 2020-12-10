@@ -8,20 +8,18 @@ title = "Mein erster eigener Shooter"
 Player_Grösse = 0.15
 Crosshair_Grösse = 0.3
 
-class Startscreenview(arcade.View):
+class My_startscreen(arcade.View):
     def __init__(self):
         super().__init__()
 
-        self.start_screen_image = arcade.load_texture("galaxy.png")
-        self.intro_playership = arcade.load_texture("intro-playership.png")
-        self.intro_playership_f = arcade.load_texture("intro-playership.png", flipped_horizontally=True)
-        self.enterprise_x = 930
-        self.enterprise_y = 900
+        self.start_screen_image = arcade.load_texture("container/galaxy.png")
+        self.intro_playership = arcade.load_texture("container/intro-playership.png")
+        self.intro_playership_f = arcade.load_texture("container/intro-playership.png", flipped_horizontally=True)
         self.enterprise_dx = -6
         self.enterprise_dy = -1
         self.introframes = 0
         # spielt das Intro sobald der Screen aufgerufen wird
-        self.intro = arcade.sound.load_sound("introtest1.mp3")
+        self.intro = arcade.sound.load_sound("container/introtest1.mp3")
         arcade.sound.play_sound(self.intro)
 
 
@@ -52,8 +50,8 @@ class Startscreenview(arcade.View):
         arcade.start_render()
         # Startbild zeichnen
         self.draw_startscreen()
-        # einfliegende Enterprise
 
+        # einfliegende Enterprise
         self.draw_enterprise()
 
 
@@ -62,17 +60,22 @@ class Startscreenview(arcade.View):
         # wird ausgeführt sobald eine Taste gedrückt wird
         if key == arcade.key.N:
             # neue Instanz game der Klasse Game_view erschaffen und die Ansicht dorthin umschalten
-            game = Gameview()
+            game = My_game()
+
+            # intro stoppen ?
+            # arcade.sound.stop_sound(gself.intro)
+
+            # umschalten zu game View
             self.window.show_view(game)
 
 
-class Gameview(arcade.View):
+class My_game(arcade.View):
     def __init__(self):
         super().__init__()
 
-        self.player_sprite = arcade.Sprite("playership-0.png", Player_Grösse)
-        self.battle_screen = arcade.load_texture("starfield.png")
-        self.aim_crosshair = arcade.Sprite("crosshair1.png", Crosshair_Grösse)
+        self.player_sprite = arcade.Sprite("container/playership-0.png", Player_Grösse)
+        self.battle_screen = arcade.load_texture("not_used/starfield.png")
+        self.aim_crosshair = arcade.Sprite("container/crosshair1.png", Crosshair_Grösse)
         self.aim_crosshair.center_x = width / 2
         self.aim_crosshair.center_y = height / 4*3
 
@@ -107,13 +110,13 @@ class Gameview(arcade.View):
     def update(self, delta_time: float):
         # Spiellogik, Bewegungen, Collisionen feststellen, Variablen usw aktualisieren
         self.player_sprite.center_x += self.delta_x
-        #self.player_sprite.
+        #gself.player_sprite.
 
 
     def on_key_press(self, key, modifier):
         # wird ausgeführt sobald eine Taste gedrückt wird
         if key == arcade.key.ESCAPE:
-            start_view = Startscreenview()
+            start_view = My_startscreen()
             self.window.show_view(start_view)
         if key == arcade.key.D:
             self.delta_x = self.player_move_speed
@@ -147,7 +150,7 @@ class Gameview(arcade.View):
 def main():
     window = arcade.Window(width, height, title)
     window.set_mouse_visible(False)
-    start_view = Startscreenview()
+    start_view = My_startscreen()
     window.show_view(start_view)
 
     arcade.run()
